@@ -15,7 +15,10 @@ RUN mvn -B package -DskipTests
 FROM tomcat:8.0
 
 # 빌드된 WAR 파일을 Tomcat의 webapps 디렉토리에 복사
-COPY --from=build /usr/src/app/target/*.war /usr/local/tomcat/webapps/
+#COPY --from=build /usr/src/app/target/*.war /usr/local/tomcat/webapps/
+
+# 빌드된 WAR 파일을 Tomcat의 webapps 디렉토리에 복사
+COPY target/*.war /usr/local/tomcat/webapps/
 
 # Tomcat 서버 실행
 CMD ["catalina.sh", "run"]
