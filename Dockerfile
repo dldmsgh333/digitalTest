@@ -9,7 +9,7 @@ COPY src ./src
 COPY pom.xml .
 
 # Maven 빌드를 실행하여 WAR 파일 생성
-RUN mvn clean package
+RUN mvn -B package -DskipTests
 
 # 배포 스테이지: Tomcat 이미지를 사용하여 WAR 파일 배포
 FROM tomcat:8.0
